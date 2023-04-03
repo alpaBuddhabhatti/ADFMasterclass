@@ -15,23 +15,27 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_ADLG'"
 		},
+		"LS_ASQL_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_ASQL'"
+		},
+		"LS_Blob_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_Blob'"
+		},
 		"linkedService1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'linkedService1'"
 		},
-		"LS_ASQL_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_ASQL'"
+		"DS_HTTP_JSON_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001"
 		},
 		"LS_ADLG_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adfmlakedev999.dfs.core.windows.net/"
 		},
 		"LS_HTTP_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001"
-		},
-		"DS_HTTP_JSON_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001"
 		},
@@ -68,20 +72,23 @@
 					"LS_ADLG_accountKey": {
 						"value": "[parameters('LS_ADLG_accountKey')]"
 					},
+					"LS_ASQL_connectionString": {
+						"value": "[parameters('LS_ASQL_connectionString')]"
+					},
+					"LS_Blob_connectionString": {
+						"value": "[parameters('LS_Blob_connectionString')]"
+					},
 					"linkedService1_connectionString": {
 						"value": "[parameters('linkedService1_connectionString')]"
 					},
-					"LS_ASQL_connectionString": {
-						"value": "[parameters('LS_ASQL_connectionString')]"
+					"DS_HTTP_JSON_properties_typeProperties_url": {
+						"value": "[parameters('DS_HTTP_JSON_properties_typeProperties_url')]"
 					},
 					"LS_ADLG_properties_typeProperties_url": {
 						"value": "[parameters('LS_ADLG_properties_typeProperties_url')]"
 					},
 					"LS_HTTP_properties_typeProperties_url": {
 						"value": "[parameters('LS_HTTP_properties_typeProperties_url')]"
-					},
-					"DS_HTTP_JSON_properties_typeProperties_url": {
-						"value": "[parameters('DS_HTTP_JSON_properties_typeProperties_url')]"
 					}
 				}
 			},
