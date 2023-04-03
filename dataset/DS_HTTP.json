@@ -2,7 +2,7 @@
 	"name": "DS_HTTP",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_HTTP",
+			"referenceName": "DS_HTTP_JSON",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
