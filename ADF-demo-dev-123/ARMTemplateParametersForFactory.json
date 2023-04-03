@@ -14,20 +14,11 @@
 		"LS_ASQL_connectionString": {
 			"value": ""
 		},
-		"LS_Blob_connectionString": {
-			"value": ""
-		},
-		"linkedService1_connectionString": {
-			"value": ""
-		},
 		"DS_HTTP_JSON_properties_typeProperties_url": {
 			"value": "https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001"
 		},
 		"LS_ADLG_properties_typeProperties_url": {
 			"value": "https://adfmlakedev999.dfs.core.windows.net/"
-		},
-		"LS_HTTP_properties_typeProperties_url": {
-			"value": "https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001"
 		}
 	}
 }
