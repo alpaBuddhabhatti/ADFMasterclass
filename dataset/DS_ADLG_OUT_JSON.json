@@ -1,0 +1,22 @@
+{
+	"name": "DS_ADLG_OUT_JSON",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLG",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "empdata.json",
+					"type": "Expression"
+				},
+				"fileSystem": "output"
+			}
+		},
+		"schema": {}
+	}
+}
