@@ -20,7 +20,7 @@
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
-				"frequency": "Minute",
+				"frequency": "Hour",
 				"interval": 15,
 				"startTime": "2023-04-03T18:29:00",
 				"endTime": "2023-04-04T18:29:00",
