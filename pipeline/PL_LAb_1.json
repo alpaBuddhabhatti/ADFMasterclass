@@ -1,0 +1,10 @@
+{
+	"name": "PL_LAb_1",
+	"properties": {
+		"description": "Copy file from ABLB to ADLG",
+		"folder": {
+			"name": "Lab"
+		},
+		"annotations": []
+	}
+}
