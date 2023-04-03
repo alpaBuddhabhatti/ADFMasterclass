@@ -675,6 +675,13 @@
 							"type": "PipelineReference"
 						},
 						"parameters": {}
+					},
+					{
+						"pipelineReference": {
+							"referenceName": "PL_LAB1_1",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
 					}
 				],
 				"type": "ScheduleTrigger",
@@ -689,7 +696,8 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/PL_LAB1')]"
+				"[concat(variables('factoryId'), '/pipelines/PL_LAB1')]",
+				"[concat(variables('factoryId'), '/pipelines/PL_LAB1_1')]"
 			]
 		}
 	]
