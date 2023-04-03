@@ -2,14 +2,15 @@
 	"name": "DS_HTTP",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "DS_HTTP_JSON",
+			"referenceName": "LS_HTTP",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "HttpServerLocation"
+				"type": "HttpServerLocation",
+				"relativeUrl": "?noofRecords=10&idStarts=1001"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
