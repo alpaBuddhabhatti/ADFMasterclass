@@ -1,0 +1,12 @@
+{
+	"name": "LS_HTTP",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://hub.dummyapis.com/employee",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
