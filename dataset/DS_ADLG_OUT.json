@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "empdata.json",
 				"fileSystem": "output"
 			},
 			"columnDelimiter": ",",
