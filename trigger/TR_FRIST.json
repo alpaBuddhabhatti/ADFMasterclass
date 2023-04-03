@@ -9,6 +9,12 @@
 					"referenceName": "PL_LAB1",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "PL_LAB1_1",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
