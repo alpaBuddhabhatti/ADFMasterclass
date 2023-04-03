@@ -1,8 +1,0 @@
-CustomerID,Car Type,FileName
-3,BMW,3_BMW
-4,BMW,4_BMW
-
-
-
- "url": "https://test.salesforce.com/services/oauth2/token?username=azure.integration.nt@nationaltrust.org.uk.sit&password=NationalTrust@2022&grant_type=password&client_id=3MVG9xqN3LZmHU7lAxwdL6XcseLV.ZDnfkpVr9hhSHW..MRjko31AJN8ABVFGOLrFOtqShFTefd_efGoz9yuf&client_secret=1F32907B23DD3AB3EC24944081A95DBFE4139980A440EF8F7096B5449B99A54C",
-  
