@@ -1,5 +1,5 @@
 {
-	"name": "Delete files older than 1 days",
+	"name": "LAB2",
 	"properties": {
 		"description": "Please input a folder path as the parameter for this pipeline, and the pipeline will delete files which were last modified more than 30 days ago under the particular folder path.",
 		"activities": [
@@ -67,6 +67,9 @@
 				"type": "string",
 				"defaultValue": "loggingfolder/subfolder"
 			}
+		},
+		"folder": {
+			"name": "Lab2"
 		},
 		"annotations": []
 	}
