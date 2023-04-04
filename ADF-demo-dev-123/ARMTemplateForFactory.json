@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "ADF-demo-dev-123"
 		},
+		"AzureFunction1_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
+		},
 		"LS_ABLB_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_ABLB'"
@@ -18,6 +22,10 @@
 		"LS_ASQL_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_ASQL'"
+		},
+		"AzureFunction1_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://azurefunctionappdemo-funcapp-dev.azurewebsites.net"
 		},
 		"LS_ADLG_properties_typeProperties_url": {
 			"type": "string",
@@ -32,6 +40,80 @@
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Delete files older than 30 days')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Please input a folder path as the parameter for this pipeline, and the pipeline will delete files which were last modified more than 30 days ago under the particular folder path.",
+				"activities": [
+					{
+						"name": "DeleteFiles",
+						"description": "Connect to your storage account to save the log file.",
+						"type": "Delete",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "DS_ABLB_IN",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"logStorageSettings": {
+								"linkedServiceName": {
+									"referenceName": "LS_ADLG",
+									"type": "LinkedServiceReference"
+								},
+								"path": {
+									"value": "@pipeline().parameters.LoggingPath",
+									"type": "Expression"
+								}
+							},
+							"enableLogging": true,
+							"storeSettings": {
+								"type": "AzureBlobStorageReadSettings",
+								"recursive": true,
+								"modifiedDatetimeEnd": {
+									"value": "@{adddays(pipeline().TriggerTime, -30)}",
+									"type": "Expression"
+								},
+								"wildcardFileName": "*"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"parameters": {
+					"SourceFolder": {
+						"type": "string",
+						"defaultValue": "sourcefolder"
+					},
+					"SourceDirectory": {
+						"type": "string",
+						"defaultValue": "subfolder"
+					},
+					"LoggingPath": {
+						"type": "string",
+						"defaultValue": "loggingfolder/subfolder"
+					}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_ABLB_IN')]",
+				"[concat(variables('factoryId'), '/linkedServices/LS_ADLG')]"
+			]
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LAB2')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
@@ -111,7 +193,8 @@
 				"folder": {
 					"name": "Lab2"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2023-04-04T13:33:19Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_ADLG_BIN_DEL_ACT')]",
@@ -164,7 +247,8 @@
 				"folder": {
 					"name": "Lab2"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2023-04-04T13:33:19Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_ADLG_BIN_DEL_ACT_SINGLE')]"
@@ -307,7 +391,8 @@
 				"folder": {
 					"name": "Lab2"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2023-04-04T13:33:20Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_ABLB_IN_MULTIPLE_FILE')]",
@@ -471,7 +556,8 @@
 				"folder": {
 					"name": "Lab2"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2023-04-04T13:33:20Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_ABLB_IN_MULTIPLE_FILE_ALL')]",
@@ -530,7 +616,8 @@
 						"type": "String"
 					}
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2023-04-04T13:33:19Z"
 			},
 			"dependsOn": []
 		},
@@ -585,7 +672,8 @@
 						"type": "String"
 					}
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2023-04-04T13:33:19Z"
 			},
 			"dependsOn": []
 		},
@@ -644,7 +732,8 @@
 						"defaultValue": "123"
 					}
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2023-04-04T13:33:19Z"
 			},
 			"dependsOn": []
 		},
@@ -729,7 +818,8 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2023-04-04T13:33:19Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_ABLB_IN')]",
@@ -810,7 +900,8 @@
 				"folder": {
 					"name": "Lab1"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2023-04-03T13:36:58Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_ABLB_IN')]",
@@ -879,7 +970,8 @@
 				"folder": {
 					"name": "Lab1"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2023-04-03T13:36:58Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_ABLB_IN_BINARY')]",
@@ -956,7 +1048,8 @@
 				"folder": {
 					"name": "Lab1"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2023-04-03T13:36:58Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_ABLB_IN')]",
@@ -1036,7 +1129,8 @@
 				"folder": {
 					"name": "Lab1"
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2023-04-03T13:36:58Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_HTTP')]",
@@ -1086,7 +1180,8 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2023-04-04T13:33:19Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_ABLB_IN')]"
@@ -1129,7 +1224,8 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2023-04-04T13:33:19Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/LS_ASQL')]"
@@ -1769,6 +1865,24 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_ASQL')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureFunction1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureFunction",
+				"typeProperties": {
+					"functionAppUrl": "[parameters('AzureFunction1_properties_typeProperties_functionAppUrl')]",
+					"functionKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureFunction1_functionKey')]"
+					},
+					"authentication": "Anonymous"
+				}
+			},
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LS_ABLB')]",

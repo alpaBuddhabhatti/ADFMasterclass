@@ -1,1 +1,6 @@
-{}
+{
+	"StoreURL": {
+		"type": "string",
+		"value": "https://adfmstoredev999.blob.core.windows.net"
+	}
+}

@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "ADF-demo-dev-123"
 		},
+		"AzureFunction1_functionKey": {
+			"value": ""
+		},
 		"LS_ABLB_connectionString": {
 			"value": ""
 		},
@@ -13,6 +16,9 @@
 		},
 		"LS_ASQL_connectionString": {
 			"value": ""
+		},
+		"AzureFunction1_properties_typeProperties_functionAppUrl": {
+			"value": "https://azurefunctionappdemo-funcapp-dev.azurewebsites.net"
 		},
 		"LS_ADLG_properties_typeProperties_url": {
 			"value": "https://adfmlakedev999.dfs.core.windows.net/"
