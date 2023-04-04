@@ -52,7 +52,7 @@
 										{
 											"name": "Data",
 											"value": {
-												"value": "@string(variables('Fruits'))",
+												"value": "testing",
 												"type": "Expression"
 											}
 										}
@@ -128,6 +128,10 @@
 			},
 			"FruitList": {
 				"type": "Array"
+			},
+			"testing": {
+				"type": "String",
+				"defaultValue": "123"
 			}
 		},
 		"annotations": []
