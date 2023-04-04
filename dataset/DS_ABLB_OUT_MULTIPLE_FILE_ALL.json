@@ -2,7 +2,7 @@
 	"name": "DS_ABLB_OUT_MULTIPLE_FILE_ALL",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_ABLB",
+			"referenceName": "LS_ADLG",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
@@ -17,12 +17,12 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
+				"type": "AzureBlobFSLocation",
 				"fileName": {
 					"value": "@dataset().FileName",
 					"type": "Expression"
 				},
-				"container": {
+				"fileSystem": {
 					"value": "@dataset().BO_NAME",
 					"type": "Expression"
 				}
