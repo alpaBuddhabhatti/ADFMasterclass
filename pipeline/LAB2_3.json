@@ -104,11 +104,15 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "DS_ABLB_IN_PARAM",
+									"referenceName": "DS_ABLB_IN_PARAM_All",
 									"type": "DatasetReference",
 									"parameters": {
 										"FileName": {
 											"value": "@item().name",
+											"type": "Expression"
+										},
+										"BO_NAME": {
+											"value": "@pipeline().parameters.BO_Name",
 											"type": "Expression"
 										}
 									}
