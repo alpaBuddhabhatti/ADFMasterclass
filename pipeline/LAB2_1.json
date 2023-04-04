@@ -1,6 +1,7 @@
 {
 	"name": "LAB2_1",
 	"properties": {
+		"description": "Moving All CSV files from input container  to ADLG for BO1",
 		"activities": [
 			{
 				"name": "List Of  Files",
@@ -24,6 +25,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
