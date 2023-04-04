@@ -1,5 +1,5 @@
 {
-	"name": "DS_ABLB_OUT_MULTIPLE_FILE_ALL",
+	"name": "DS_ADLG_OUT_MULTIPLE_FILE_ALL",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LS_ADLG",
