@@ -1,7 +1,7 @@
 {
 	"name": "LAB2_3",
 	"properties": {
-		"description": "Same pipeline works with other Business outcomes ",
+		"description": "How to reuse LAB2_1  for other than BO1  Business outcome. Same pipeline works with other Business outcomes ",
 		"activities": [
 			{
 				"name": "List Of  Files",
