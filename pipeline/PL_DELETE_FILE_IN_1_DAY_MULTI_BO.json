@@ -1,5 +1,5 @@
 {
-	"name": "PL_DELETE_FILE_IN_1_DAY_copy1",
+	"name": "PL_DELETE_FILE_IN_1_DAY_MULTI_BO",
 	"properties": {
 		"description": "Please input a folder path as the parameter for this pipeline, and the pipeline will delete files which were last modified more than 30 days ago under the particular folder path.",
 		"activities": [
