@@ -1,0 +1,48 @@
+{
+	"name": "PL_FOREACHLOOP_ACTIVITY_copy1",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('Fruits')",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Fruit",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "Current_Fruit",
+								"value": {
+									"value": "@item()",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"Fruits": {
+				"type": "Array",
+				"defaultValue": [
+					"1",
+					"2",
+					"3"
+				]
+			},
+			"Current_Fruit": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}
