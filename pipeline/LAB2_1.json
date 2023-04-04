@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Get Metadata1",
+				"name": "List Of  Files",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -36,7 +36,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Get Metadata1",
+						"activity": "List Of  Files",
 						"dependencyConditions": [
 							"Succeeded"
 						]
