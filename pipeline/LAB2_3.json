@@ -17,8 +17,14 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "DS_ABLB_IN_MULTIPLE_FILE",
-						"type": "DatasetReference"
+						"referenceName": "DS_ABLB_IN_MULTIPLE_FILE_ALL",
+						"type": "DatasetReference",
+						"parameters": {
+							"BO_NAME": {
+								"value": "@pipeline().parameters.BO_Name",
+								"type": "Expression"
+							}
+						}
 					},
 					"fieldList": [
 						"childItems"
