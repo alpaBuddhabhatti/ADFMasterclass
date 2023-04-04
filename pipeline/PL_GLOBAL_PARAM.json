@@ -21,6 +21,9 @@
 				"type": "String"
 			}
 		},
+		"folder": {
+			"name": "Lab2"
+		},
 		"annotations": []
 	}
 }

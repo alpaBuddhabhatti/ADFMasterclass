@@ -1,5 +1,5 @@
 {
-	"name": "Delete files older than 30 days",
+	"name": "Delete files older than 1 day",
 	"properties": {
 		"description": "Please input a folder path as the parameter for this pipeline, and the pipeline will delete files which were last modified more than 30 days ago under the particular folder path.",
 		"activities": [
@@ -19,13 +19,7 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "DS_ABLB_IN",
-						"type": "DatasetReference",
-						"parameters": {
-							"BONAME": {
-								"value": "@pipeline().parameters.BO",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					},
 					"logStorageSettings": {
 						"linkedServiceName": {
@@ -66,6 +60,9 @@
 			"BO": {
 				"type": "string"
 			}
+		},
+		"folder": {
+			"name": "Lab2"
 		},
 		"annotations": []
 	}
