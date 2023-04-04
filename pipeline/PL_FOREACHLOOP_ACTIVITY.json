@@ -14,12 +14,16 @@
 					},
 					"activities": [
 						{
-							"name": "Wait1",
-							"type": "Wait",
+							"name": "Fruit",
+							"type": "SetVariable",
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
-								"waitTimeInSeconds": 1
+								"variableName": "Current_Fruit",
+								"value": {
+									"value": "@item()",
+									"type": "Expression"
+								}
 							}
 						}
 					]
@@ -34,6 +38,9 @@
 					"Banana",
 					"Orange"
 				]
+			},
+			"Current_Fruit": {
+				"type": "String"
 			}
 		},
 		"annotations": []
