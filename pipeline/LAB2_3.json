@@ -128,7 +128,7 @@
 		"parameters": {
 			"BO_Name": {
 				"type": "string",
-				"defaultValue": "bo1"
+				"defaultValue": "input"
 			}
 		},
 		"folder": {
