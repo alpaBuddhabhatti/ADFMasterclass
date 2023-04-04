@@ -46,7 +46,7 @@
 						"type": "AzureBlobFSReadSettings",
 						"recursive": true,
 						"modifiedDatetimeEnd": {
-							"value": "@{adddays(pipeline().TriggerTime, -1)}",
+							"value": "@{adddays(pipeline().TriggerTime, -60)}",
 							"type": "Expression"
 						},
 						"wildcardFileName": "*"
