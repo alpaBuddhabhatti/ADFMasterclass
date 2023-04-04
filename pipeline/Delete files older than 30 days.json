@@ -19,7 +19,13 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "DS_ABLB_IN",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"BONAME": {
+								"value": "@pipeline().parameters.BO",
+								"type": "Expression"
+							}
+						}
 					},
 					"logStorageSettings": {
 						"linkedServiceName": {
@@ -36,7 +42,7 @@
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
 						"modifiedDatetimeEnd": {
-							"value": "@{adddays(pipeline().TriggerTime, -30)}",
+							"value": "@{adddays(pipeline().TriggerTime, -1)}",
 							"type": "Expression"
 						},
 						"wildcardFileName": "*"
@@ -56,6 +62,9 @@
 			"LoggingPath": {
 				"type": "string",
 				"defaultValue": "loggingfolder/subfolder"
+			},
+			"BO": {
+				"type": "string"
 			}
 		},
 		"annotations": []
