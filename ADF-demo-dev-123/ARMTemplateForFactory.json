@@ -19,13 +19,13 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_ASQL'"
 		},
-		"DS_HTTP_JSON_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001"
-		},
 		"LS_ADLG_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adfmlakedev999.dfs.core.windows.net/"
+		},
+		"LS_HTTP_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://hub.dummyapis.com/employee"
 		}
 	},
 	"variables": {
@@ -33,7 +33,7 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/Delete files older than 1 days')]",
+			"name": "[concat(parameters('factoryName'), '/LAB2')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -54,7 +54,7 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataset": {
-								"referenceName": "BinaryDatasetForDeleteActivity",
+								"referenceName": "DS_ADLG_BIN_DEL_ACT",
 								"type": "DatasetReference",
 								"parameters": {
 									"FolderPath": {
@@ -108,10 +108,13 @@
 						"defaultValue": "loggingfolder/subfolder"
 					}
 				},
+				"folder": {
+					"name": "Lab2"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/BinaryDatasetForDeleteActivity')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLG_BIN_DEL_ACT')]",
 				"[concat(variables('factoryId'), '/linkedServices/LS_ABLB')]"
 			]
 		},
@@ -423,44 +426,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/BinaryDatasetForDeleteActivity')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "Connect to your source store to delete files.",
-				"linkedServiceName": {
-					"referenceName": "LS_ADLG",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"FolderPath": {
-						"type": "string"
-					},
-					"Directory": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "Binary",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": {
-							"value": "@dataset().Directory",
-							"type": "Expression"
-						},
-						"fileSystem": {
-							"value": "@dataset().FolderPath",
-							"type": "Expression"
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_ADLG')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/DS_ABLB_BINARY_OUT')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -577,6 +542,44 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_ADLG_BIN_DEL_ACT')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Connect to your source store to delete files.",
+				"linkedServiceName": {
+					"referenceName": "LS_ADLG",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"FolderPath": {
+						"type": "string"
+					},
+					"Directory": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": {
+							"value": "@dataset().Directory",
+							"type": "Expression"
+						},
+						"fileSystem": {
+							"value": "@dataset().FolderPath",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_ADLG')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DS_ADLG_OUT')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -630,14 +633,15 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "DS_HTTP_JSON",
+					"referenceName": "LS_HTTP",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
-						"type": "HttpServerLocation"
+						"type": "HttpServerLocation",
+						"relativeUrl": "?noofRecords=10&idStarts=1001"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -647,7 +651,7 @@
 				"schema": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/DS_HTTP_JSON')]"
+				"[concat(variables('factoryId'), '/linkedServices/LS_HTTP')]"
 			]
 		},
 		{
@@ -670,21 +674,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/LS_ASQL')]"
 			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_HTTP_JSON')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "HttpServer",
-				"typeProperties": {
-					"url": "[parameters('DS_HTTP_JSON_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Anonymous"
-				}
-			},
-			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LS_ABLB')]",
@@ -725,6 +714,21 @@
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
 					"connectionString": "[parameters('LS_ASQL_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_HTTP')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "HttpServer",
+				"typeProperties": {
+					"url": "[parameters('LS_HTTP_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Anonymous"
 				}
 			},
 			"dependsOn": []
