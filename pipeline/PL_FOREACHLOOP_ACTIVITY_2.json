@@ -52,14 +52,14 @@
 										{
 											"name": "Data",
 											"value": {
-												"value": "@item()",
+												"value": "@variables('Fruits')",
 												"type": "Expression"
 											}
 										}
 									],
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
-										"recursive": true,
+										"recursive": false,
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
