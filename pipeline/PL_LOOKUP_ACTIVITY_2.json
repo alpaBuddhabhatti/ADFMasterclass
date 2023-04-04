@@ -1,5 +1,5 @@
 {
-	"name": "PL_LOOKUP_ACTIVITY_copy1",
+	"name": "PL_LOOKUP_ACTIVITY_2",
 	"properties": {
 		"activities": [
 			{
@@ -28,6 +28,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "Lab2"
+		},
 		"annotations": [],
 		"lastPublishTime": "2023-04-04T13:33:19Z"
 	},
