@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@variables('Items')",
+						"value": "@variables('Fruits')",
 						"type": "Expression"
 					},
 					"activities": [
