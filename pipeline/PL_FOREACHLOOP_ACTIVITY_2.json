@@ -52,7 +52,7 @@
 										{
 											"name": "Data",
 											"value": {
-												"value": "testing",
+												"value": "@variables('testing')",
 												"type": "Expression"
 											}
 										}
