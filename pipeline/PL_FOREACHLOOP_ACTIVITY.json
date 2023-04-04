@@ -27,11 +27,12 @@
 			}
 		],
 		"variables": {
-			"Items": {
+			"Fruits": {
 				"type": "Array",
 				"defaultValue": [
-					"1",
-					"2"
+					"Apple",
+					"Banana",
+					"Orange"
 				]
 			}
 		},
