@@ -1,5 +1,13 @@
 {
 	"name": "ADF-demo-dev-123",
+	"properties": {
+		"globalParameters": {
+			"StoreURL": {
+				"type": "string",
+				"value": "https://adfmstoredev999.blob.core.windows.net"
+			}
+		}
+	},
 	"location": "eastus",
 	"identity": {
 		"type": "SystemAssigned",
