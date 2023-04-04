@@ -1,0 +1,26 @@
+{
+	"name": "PL_GLOBAL_PARAM",
+	"properties": {
+		"activities": [
+			{
+				"name": "URL",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "URL",
+					"value": {
+						"value": "@pipeline().globalParameters.APIURL",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"URL": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}
