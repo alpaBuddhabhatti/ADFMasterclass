@@ -148,6 +148,8 @@
 		"folder": {
 			"name": "Lab2"
 		},
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2023-04-04T13:33:20Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }

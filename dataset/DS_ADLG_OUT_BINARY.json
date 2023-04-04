@@ -13,5 +13,6 @@
 				"fileSystem": "output"
 			}
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }
