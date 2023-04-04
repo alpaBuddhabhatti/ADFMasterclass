@@ -21,17 +21,7 @@
 						"referenceName": "DS_ABLB_IN",
 						"type": "DatasetReference"
 					},
-					"logStorageSettings": {
-						"linkedServiceName": {
-							"referenceName": "LS_ADLG",
-							"type": "LinkedServiceReference"
-						},
-						"path": {
-							"value": "@pipeline().parameters.LoggingPath",
-							"type": "Expression"
-						}
-					},
-					"enableLogging": true,
+					"enableLogging": false,
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
@@ -50,12 +40,7 @@
 				"defaultValue": "sourcefolder"
 			},
 			"SourceDirectory": {
-				"type": "string",
-				"defaultValue": "subfolder"
-			},
-			"LoggingPath": {
-				"type": "string",
-				"defaultValue": "loggingfolder/subfolder"
+				"type": "string"
 			},
 			"BO": {
 				"type": "string"
