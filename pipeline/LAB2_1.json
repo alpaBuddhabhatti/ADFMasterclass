@@ -72,7 +72,7 @@
 								"sink": {
 									"type": "DelimitedTextSink",
 									"storeSettings": {
-										"type": "AzureBlobFSWriteSettings"
+										"type": "AzureBlobStorageWriteSettings"
 									},
 									"formatSettings": {
 										"type": "DelimitedTextWriteSettings",
@@ -92,14 +92,26 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "DS_ABLB_IN",
-									"type": "DatasetReference"
+									"referenceName": "DS_ABLB_IN_PARAM",
+									"type": "DatasetReference",
+									"parameters": {
+										"FileName": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
 								{
-									"referenceName": "DS_ADLG_OUT",
-									"type": "DatasetReference"
+									"referenceName": "DS_ABLB_IN_MULTIPLE_FILE",
+									"type": "DatasetReference",
+									"parameters": {
+										"FILENAME": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
