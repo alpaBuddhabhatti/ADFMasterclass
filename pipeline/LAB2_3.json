@@ -120,11 +120,15 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "DS_ABLB_OUT_MULTIPLE_FILE",
+									"referenceName": "DS_ABLB_OUT_MULTIPLE_FILE_ALL",
 									"type": "DatasetReference",
 									"parameters": {
 										"FileName": {
 											"value": "@item().name",
+											"type": "Expression"
+										},
+										"BO_NAME": {
+											"value": "@pipeline().parameters.BO_Name",
 											"type": "Expression"
 										}
 									}
