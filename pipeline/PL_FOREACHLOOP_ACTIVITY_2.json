@@ -52,7 +52,7 @@
 										{
 											"name": "Data",
 											"value": {
-												"value": "@variables('Fruits')",
+												"value": "@item()",
 												"type": "Expression"
 											}
 										}
