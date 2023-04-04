@@ -8,6 +8,9 @@
 		"parameters": {
 			"FileName": {
 				"type": "string"
+			},
+			"BO_NAME": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
