@@ -2,5 +2,9 @@
 	"StoreURL": {
 		"type": "string",
 		"value": "https://adfmstoredev999.blob.core.windows.net"
+	},
+	"APIURL": {
+		"type": "string",
+		"value": "https://hub.dummyapis.com/employee"
 	}
 }

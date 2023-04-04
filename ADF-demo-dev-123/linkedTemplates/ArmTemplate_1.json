@@ -13,6 +13,30 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_ADLG_OUT')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_ADLG",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "output"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DS_ADLG_OUT_BINARY')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -165,6 +189,32 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_ABLB",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "moviesDB.csv",
+						"container": "input"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": false,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/LS_ASQL')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -224,7 +274,7 @@
 								"type": "AzureBlobStorageReadSettings",
 								"recursive": true,
 								"modifiedDatetimeEnd": {
-									"value": "@{adddays(pipeline().TriggerTime, -30)}",
+									"value": "@{adddays(pipeline().TriggerTime, -1)}",
 									"type": "Expression"
 								},
 								"wildcardFileName": "*"
@@ -248,6 +298,9 @@
 					"LoggingPath": {
 						"type": "string",
 						"defaultValue": "loggingfolder/subfolder"
+					},
+					"BO": {
+						"type": "string"
 					}
 				},
 				"annotations": []
@@ -778,7 +831,9 @@
 				"annotations": [],
 				"lastPublishTime": "2023-04-04T13:33:19Z"
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_ADLG_OUT')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/PL_LAB1')]",
@@ -857,7 +912,9 @@
 				"annotations": [],
 				"lastPublishTime": "2023-04-03T13:36:58Z"
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_ADLG_OUT')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/PL_LAB1_1')]",
@@ -1080,7 +1137,8 @@
 				"lastPublishTime": "2023-04-03T13:36:58Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DS_HTTP')]"
+				"[concat(variables('factoryId'), '/datasets/DS_HTTP')]",
+				"[concat(variables('factoryId'), '/datasets/DS_ADLG_OUT')]"
 			]
 		},
 		{
@@ -1114,7 +1172,7 @@
 								}
 							},
 							"dataset": {
-								"referenceName": "DS_ABLB_IN",
+								"referenceName": "DelimitedText1",
 								"type": "DatasetReference",
 								"parameters": {}
 							},
@@ -1129,7 +1187,9 @@
 				"annotations": [],
 				"lastPublishTime": "2023-04-04T13:33:19Z"
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/PL_LOOKUP_ACTIVITY_copy1')]",
@@ -1173,45 +1233,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/LS_ASQL')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/TR_FRIST')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "PL_LAB1",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					},
-					{
-						"pipelineReference": {
-							"referenceName": "PL_LAB1_1",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Hour",
-						"interval": 15,
-						"startTime": "2023-04-03T23:10:08",
-						"endTime": "2023-04-04T23:29:00",
-						"timeZone": "GMT Standard Time"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/PL_LAB1')]",
-				"[concat(variables('factoryId'), '/pipelines/PL_LAB1_1')]"
 			]
 		}
 	]
