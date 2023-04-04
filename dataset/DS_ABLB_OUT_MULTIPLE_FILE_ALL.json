@@ -22,7 +22,10 @@
 					"value": "@dataset().FileName",
 					"type": "Expression"
 				},
-				"container": "input"
+				"container": {
+					"value": "@dataset().BO_NAME",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
