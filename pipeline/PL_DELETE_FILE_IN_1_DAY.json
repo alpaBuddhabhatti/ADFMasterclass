@@ -35,13 +35,6 @@
 			}
 		],
 		"parameters": {
-			"SourceFolder": {
-				"type": "string",
-				"defaultValue": "sourcefolder"
-			},
-			"SourceDirectory": {
-				"type": "string"
-			},
 			"BO": {
 				"type": "string"
 			}
