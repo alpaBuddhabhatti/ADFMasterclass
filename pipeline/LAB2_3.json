@@ -120,7 +120,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "DS_ABLB_OUT_MULTIPLE_FILE_ALL",
+									"referenceName": "DS_ADLG_OUT_MULTIPLE_FILE_ALL",
 									"type": "DatasetReference",
 									"parameters": {
 										"FileName": {
