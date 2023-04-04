@@ -5,13 +5,20 @@
 			"referenceName": "LS_ABLB",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"BONAME": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "moviesDB.csv",
-				"container": "input"
+				"container": {
+					"value": "@dataset().BONAME",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
