@@ -104,10 +104,10 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "DS_ABLB_IN_MULTIPLE_FILE",
+									"referenceName": "DS_ABLB_OUT_MULTIPLE_FILE",
 									"type": "DatasetReference",
 									"parameters": {
-										"FILENAME": {
+										"FileName": {
 											"value": "@item().name",
 											"type": "Expression"
 										}
