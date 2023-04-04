@@ -1,0 +1,42 @@
+{
+	"name": "PL_DELETE_FILE_IN_1_DAY_copy1",
+	"properties": {
+		"description": "Please input a folder path as the parameter for this pipeline, and the pipeline will delete files which were last modified more than 30 days ago under the particular folder path.",
+		"activities": [
+			{
+				"name": "DeleteFiles",
+				"description": "Connect to your storage account to save the log file.",
+				"type": "Delete",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DS_ABLB_IN",
+						"type": "DatasetReference"
+					},
+					"enableLogging": false,
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"modifiedDatetimeEnd": {
+							"value": "@{adddays(pipeline().TriggerTime, -1)}",
+							"type": "Expression"
+						},
+						"wildcardFileName": "*"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "Lab2"
+		},
+		"annotations": []
+	}
+}
