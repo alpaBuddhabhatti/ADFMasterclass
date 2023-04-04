@@ -16,14 +16,7 @@
 						{
 							"name": "Fruits",
 							"type": "AppendVariable",
-							"dependsOn": [
-								{
-									"activity": "Copy FruitList to Blob Storage",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
+							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
 								"variableName": "FruitList",
@@ -32,86 +25,6 @@
 									"type": "Expression"
 								}
 							}
-						},
-						{
-							"name": "Copy FruitList to Blob Storage",
-							"type": "Copy",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "0.12:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"source": {
-									"type": "DelimitedTextSource",
-									"additionalColumns": [
-										{
-											"name": "Data",
-											"value": {
-												"value": "@variables('testing')",
-												"type": "Expression"
-											}
-										}
-									],
-									"storeSettings": {
-										"type": "AzureBlobStorageReadSettings",
-										"recursive": false,
-										"enablePartitionDiscovery": false
-									},
-									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
-									}
-								},
-								"sink": {
-									"type": "DelimitedTextSink",
-									"storeSettings": {
-										"type": "AzureBlobFSWriteSettings"
-									},
-									"formatSettings": {
-										"type": "DelimitedTextWriteSettings",
-										"quoteAllText": true,
-										"fileExtension": ".txt"
-									}
-								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"mappings": [
-										{
-											"source": {
-												"name": "Data",
-												"type": "String"
-											},
-											"sink": {
-												"type": "String",
-												"physicalType": "String",
-												"ordinal": 1
-											}
-										}
-									],
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
-								}
-							},
-							"inputs": [
-								{
-									"referenceName": "DS_VAR",
-									"type": "DatasetReference"
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "DS_ADLG_OUT",
-									"type": "DatasetReference"
-								}
-							]
 						}
 					]
 				}
