@@ -125,6 +125,12 @@
 				}
 			}
 		],
+		"parameters": {
+			"BO_Name": {
+				"type": "string",
+				"defaultValue": "bo1"
+			}
+		},
 		"folder": {
 			"name": "Lab2"
 		},
