@@ -1,0 +1,25 @@
+{
+	"name": "DS_ABLB_BO_PARAM",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ABLB",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"BO": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": {
+					"value": "@dataset().BO",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}
