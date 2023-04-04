@@ -19,7 +19,13 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "DS_ABLB_BO_PARAM",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"BO": {
+								"value": "@pipeline().parameters.BO",
+								"type": "Expression"
+							}
+						}
 					},
 					"enableLogging": false,
 					"storeSettings": {
