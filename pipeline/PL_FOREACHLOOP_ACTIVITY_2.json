@@ -1,0 +1,48 @@
+{
+	"name": "PL_FOREACHLOOP_ACTIVITY_2",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('Fruits')",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Fruits",
+							"type": "AppendVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "FruitList",
+								"value": {
+									"value": "@item()",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"Fruits": {
+				"type": "Array",
+				"defaultValue": [
+					"Apple",
+					"Orange",
+					"Mango"
+				]
+			},
+			"FruitList": {
+				"type": "Array"
+			}
+		},
+		"annotations": []
+	}
+}
