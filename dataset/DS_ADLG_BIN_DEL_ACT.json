@@ -1,5 +1,5 @@
 {
-	"name": "BinaryDatasetForDeleteActivity",
+	"name": "DS_ADLG_BIN_DEL_ACT",
 	"properties": {
 		"description": "Connect to your source store to delete files.",
 		"linkedServiceName": {
