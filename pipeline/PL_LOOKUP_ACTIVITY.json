@@ -27,7 +27,7 @@
 						}
 					},
 					"dataset": {
-						"referenceName": "DS_ABLB_IN",
+						"referenceName": "DelimitedText1",
 						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
