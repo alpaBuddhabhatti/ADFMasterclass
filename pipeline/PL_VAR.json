@@ -41,6 +41,9 @@
 				"defaultValue": "2"
 			}
 		},
+		"folder": {
+			"name": "Lab2"
+		},
 		"annotations": []
 	}
 }
