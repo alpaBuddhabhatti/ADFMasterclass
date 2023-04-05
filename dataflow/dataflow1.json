@@ -8,14 +8,55 @@
 		"typeProperties": {
 			"sources": [
 				{
+					"dataset": {
+						"referenceName": "DS_ABLB_IN",
+						"type": "DatasetReference"
+					},
 					"name": "source1"
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "SplitLast"
+				},
+				{
+					"name": "select1"
+				}
+			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1"
+				"source(output(",
+				"          {_col0_} as integer,",
+				"          {_col1_} as string,",
+				"          {_col2_} as string,",
+				"          {_col3_} as short,",
+				"          {_col4_} as short,",
+				"          {_col5_} as short,",
+				"          {_col6_} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     wildcardPaths:[('m1.csv')]) ~> source1",
+				"source1 derive(HouseNo = split({_col6_},',')[1],",
+				"          BuildingName = split({_col6_},',')[2],",
+				"          Postcode = split({_col6_},',')[3],",
+				"          City = split({_col6_},',')[4],",
+				"          Testing = 'This is testing') ~> SplitLast",
+				"SplitLast select(mapColumn(",
+				"          id = {_col0_},",
+				"          name = {_col1_},",
+				"          type = {_col2_},",
+				"          rank = {_col3_},",
+				"          year = {_col4_},",
+				"          HouseNo,",
+				"          BuildingName,",
+				"          Postcode,",
+				"          City,",
+				"          Testing",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
