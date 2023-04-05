@@ -21,14 +21,14 @@
 						"referenceName": "DS_ADLG_OUT",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "sinkADLG"
 				},
 				{
 					"dataset": {
 						"referenceName": "LS_ASQL",
 						"type": "DatasetReference"
 					},
-					"name": "sink2"
+					"name": "sinkASQL"
 				}
 			],
 			"transformations": [
@@ -81,7 +81,7 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     saveOrder: 1,",
-				"     partitionBy('hash', 1)) ~> sink1",
+				"     partitionBy('hash', 1)) ~> sinkADLG",
 				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
@@ -102,7 +102,7 @@
 				"          Postcode,",
 				"          HouseNo",
 				"     ),",
-				"     partitionBy('hash', 1)) ~> sink2"
+				"     partitionBy('hash', 1)) ~> sinkASQL"
 			]
 		}
 	}
