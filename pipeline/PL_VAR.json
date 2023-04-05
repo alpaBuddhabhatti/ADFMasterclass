@@ -1,0 +1,46 @@
+{
+	"name": "PL_VAR",
+	"properties": {
+		"activities": [
+			{
+				"name": "Wait1",
+				"type": "Wait",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": {
+						"value": "@variables('Seconds')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Seconds",
+					"value": {
+						"value": "5",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"Seconds": {
+				"type": "String",
+				"defaultValue": "2"
+			}
+		},
+		"annotations": []
+	}
+}
