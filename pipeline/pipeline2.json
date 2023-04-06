@@ -21,11 +21,7 @@
 				"typeProperties": {
 					"scripts": [
 						{
-							"type": "NonQuery",
-							"text": {
-								"value": "drop procedure sp_test",
-								"type": "Expression"
-							}
+							"type": "Query"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
