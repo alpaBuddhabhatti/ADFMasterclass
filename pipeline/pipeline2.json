@@ -21,9 +21,9 @@
 				"typeProperties": {
 					"scripts": [
 						{
-							"type": "Query",
+							"type": "NonQuery",
 							"text": {
-								"value": "exec dbo.sp_test1",
+								"value": "drop procedure sp_test",
 								"type": "Expression"
 							}
 						}
