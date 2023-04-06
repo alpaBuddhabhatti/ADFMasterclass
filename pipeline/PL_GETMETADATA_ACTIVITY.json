@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Get Metadata1",
+				"name": "Get List of Files",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -20,48 +20,10 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"columnCount",
-						"itemName",
-						"lastModified",
-						"size",
-						"contentMD5"
+						"childItems"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
-						"recursive": true,
-						"enablePartitionDiscovery": false
-					},
-					"formatSettings": {
-						"type": "DelimitedTextReadSettings"
-					}
-				}
-			},
-			{
-				"name": "Get Metadata1_copy1",
-				"type": "GetMetadata",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataset": {
-						"referenceName": "DS_ADLG_OUT",
-						"type": "DatasetReference"
-					},
-					"fieldList": [
-						"itemName",
-						"lastModified",
-						"childItems",
-						"itemType",
-						"lastModified"
-					],
-					"storeSettings": {
-						"type": "AzureBlobFSReadSettings",
 						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
