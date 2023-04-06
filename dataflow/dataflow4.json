@@ -15,7 +15,15 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "LS_ASQL",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "flatten1"
@@ -34,7 +42,7 @@
 				"     validationMode: 'none',",
 				"     namespaces: false,",
 				"     wildcardPaths:[('File3.xml')]) ~> source1",
-				"source1 foldDown(unroll(catalog.book),",
+				"source1 foldDown(unroll(catalog.book, catalog.book),",
 				"     mapColumn(",
 				"          catalog = catalog.book.{@id},",
 				"          author = catalog.book.author,",
@@ -51,7 +59,17 @@
 				"          language = languages.language",
 				"     ),",
 				"     skipDuplicateMapInputs: false,",
-				"     skipDuplicateMapOutputs: false) ~> flatten2"
+				"     skipDuplicateMapOutputs: false) ~> flatten2",
+				"flatten2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
 			]
 		}
 	}
