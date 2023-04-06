@@ -41,7 +41,7 @@
 				"typeProperties": {
 					"variableName": "result",
 					"value": {
-						"value": "@activity('Data flow1').output.runStatus.metrics.sink1.rowsWritten",
+						"value": "@string(activity('Data flow1').output.runStatus.metrics.sink1.rowsWritten)",
 						"type": "Expression"
 					}
 				}
