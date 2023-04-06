@@ -87,7 +87,7 @@
 				"     stepValue: 1L) ~> surrogateKey1",
 				"cast1 filter(Column_4> 0) ~> filter1",
 				"source1 cast(output(",
-				"          Column_1 as integer",
+				"          Column_4 as integer",
 				"     ),",
 				"     errors: true) ~> cast1"
 			]
