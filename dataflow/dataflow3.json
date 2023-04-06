@@ -55,7 +55,7 @@
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> source2",
 				"source2, source1 exists(id == toInteger(Column_1),",
-				"     negate:false,",
+				"     negate:true,",
 				"     broadcast: 'auto')~> exists1"
 			]
 		}
