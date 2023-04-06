@@ -1,0 +1,42 @@
+{
+	"name": "DF_Sort",
+	"properties": {
+		"folder": {
+			"name": "lab3"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "LS_ASQL",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "sort1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          id as integer,",
+				"          name as string,",
+				"          type as string,",
+				"          rank as short,",
+				"          year as short,",
+				"          Postcode as string,",
+				"          HouseNo as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source2",
+				"source2 sort(asc(name, true)) ~> sort1"
+			]
+		}
+	}
+}
