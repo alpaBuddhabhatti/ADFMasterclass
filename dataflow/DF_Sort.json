@@ -39,7 +39,7 @@
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> source2",
 				"source2 sort(asc(name, true)) ~> sort1",
-				"sort1, source2 assert(expectTrue(iif(source2@rank >0, true(),false()), false, 'assert1', iif(source2@rank >0, true(),false()))) ~> assert1"
+				"sort1, source2 assert(expectTrue(iif(source2@rank >0, true(),false()), false, 'assert1')) ~> assert1"
 			]
 		}
 	}
