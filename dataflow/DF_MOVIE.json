@@ -37,9 +37,6 @@
 				},
 				{
 					"name": "select1"
-				},
-				{
-					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -75,8 +72,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 aggregate() ~> aggregate1",
-				"aggregate1 sink(allowSchemaDrift: true,",
+				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:[('FirstDataFlow.csv')],",
 				"     umask: 0022,",
