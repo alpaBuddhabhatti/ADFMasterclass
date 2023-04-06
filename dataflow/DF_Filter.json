@@ -38,6 +38,9 @@
 				},
 				{
 					"name": "filter1"
+				},
+				{
+					"name": "cast1"
 				}
 			],
 			"scriptLines": [
@@ -82,7 +85,11 @@
 				"union1 keyGenerate(output(RowNum as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
-				"source1 filter(toInteger(Column_4) > 0) ~> filter1"
+				"cast1 filter(Column_4> 0) ~> filter1",
+				"source1 cast(output(",
+				"          Column_1 as integer",
+				"     ),",
+				"     errors: true) ~> cast1"
 			]
 		}
 	}
