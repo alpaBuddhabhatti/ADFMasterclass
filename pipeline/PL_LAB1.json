@@ -50,13 +50,7 @@
 				"inputs": [
 					{
 						"referenceName": "DS_ABLB_IN",
-						"type": "DatasetReference",
-						"parameters": {
-							"filename": {
-								"value": "@pipeline().parameters.filename",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
