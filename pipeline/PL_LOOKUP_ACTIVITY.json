@@ -34,6 +34,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"BO_NAME": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "Lab2"
 		},
