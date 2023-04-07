@@ -1,9 +1,9 @@
 {
-	"name": "pipeline4",
+	"name": "PL_ELT",
 	"properties": {
 		"activities": [
 			{
-				"name": "Execute Pipeline EL",
+				"name": "Extracts Loads",
 				"type": "ExecutePipeline",
 				"dependsOn": [],
 				"userProperties": [],
@@ -19,11 +19,11 @@
 				}
 			},
 			{
-				"name": "Execute Pipeline1",
+				"name": "Transform and Load",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "Execute Pipeline EL",
+						"activity": "Extracts Loads",
 						"dependencyConditions": [
 							"Succeeded"
 						]
