@@ -81,14 +81,9 @@
 									}
 								},
 								"sink": {
-									"type": "DelimitedTextSink",
+									"type": "BinarySink",
 									"storeSettings": {
 										"type": "AzureBlobFSWriteSettings"
-									},
-									"formatSettings": {
-										"type": "DelimitedTextWriteSettings",
-										"quoteAllText": true,
-										"fileExtension": ".csv"
 									}
 								},
 								"enableStaging": false
@@ -96,12 +91,6 @@
 							"inputs": [
 								{
 									"referenceName": "Binary1",
-									"type": "DatasetReference"
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "DS_ADLG_OUT_MULTIPLE_FILE_ALL",
 									"type": "DatasetReference",
 									"parameters": {
 										"FileName": {
@@ -113,6 +102,12 @@
 											"type": "Expression"
 										}
 									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Binary2",
+									"type": "DatasetReference"
 								}
 							]
 						}
