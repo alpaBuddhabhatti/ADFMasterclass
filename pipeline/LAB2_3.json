@@ -112,7 +112,7 @@
 											"type": "Expression"
 										},
 										"BO_NAME": {
-											"value": "@pipeline().parameters.BO_Name",
+											"value": "@concat(pipeline().parameters.BO_Name,'-in')",
 											"type": "Expression"
 										}
 									}
