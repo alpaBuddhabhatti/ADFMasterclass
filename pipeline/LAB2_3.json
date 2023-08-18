@@ -142,7 +142,7 @@
 		"parameters": {
 			"BO_Name": {
 				"type": "string",
-				"defaultValue": "input"
+				"defaultValue": "movie"
 			}
 		},
 		"folder": {
