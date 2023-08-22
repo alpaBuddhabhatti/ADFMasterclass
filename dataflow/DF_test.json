@@ -49,7 +49,7 @@
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
 				"filter1 sort(desc(Rating, true)) ~> sort1",
-				"surrogateKey1 filter(ERROR_FUNCTION('')) ~> filter2",
+				"surrogateKey1 filter(rownum==1) ~> filter2",
 				"filter2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
