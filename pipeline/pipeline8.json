@@ -45,8 +45,6 @@
 			{
 				"name": "Set variable1",
 				"type": "SetVariable",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Data flow1",
@@ -62,7 +60,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "result",
-					"value": 1
+					"value": {
+						"value": "@int(activity('Data flow1').output.runStatus.metrics.sink1.rowsWritten)",
+						"type": "Expression"
+					}
 				}
 			}
 		],
