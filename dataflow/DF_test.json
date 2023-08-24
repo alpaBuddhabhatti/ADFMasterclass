@@ -40,6 +40,9 @@
 				},
 				{
 					"name": "filter2"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -61,7 +64,13 @@
 				"     stepValue: 1L) ~> surrogateKey1",
 				"filter1 sort(desc(Rating, true)) ~> sort1",
 				"surrogateKey1 filter(rownum==1) ~> filter2",
-				"filter2 sink(allowSchemaDrift: true,",
+				"filter2 select(mapColumn(",
+				"          Address,",
+				"          rownum",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          Column_1 as string,",
